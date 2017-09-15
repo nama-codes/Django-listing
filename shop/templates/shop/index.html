@@ -1,0 +1,9 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}" />
+
+<h1>Here are some of the World Famous Paintings</h1>
+<ul>
+  {% for p in object_list%}
+    <li><a href="{% url 'shop:detail' p.id %}">{{p.title}}<br/><img src={{p.photo.url}}></a></li>
+  {%endfor%}
+</ul>

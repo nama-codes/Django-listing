@@ -1,0 +1,10 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}" />
+
+<h1>{{product.title}}</h1>
+<img src={{product.photo.url}}>
+<h3>Description</h3>
+<p>{{product.description}}</p>
+<strong>Price: $</strong>{{product.price}}
+<br/><br/>
+<a href="{%url 'shop:enquire' product.id%}">Submit a Query</a>
