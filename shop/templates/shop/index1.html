@@ -1,0 +1,10 @@
+{%extends 'shop/base.html'%}
+{%block body%}
+<h1>Here are some of the World Famous Paintings</h1>
+<h3>To view  categories <a href="{% url 'shop:category_list'%}">click here</a></h3>
+<ul>
+  {% for p in object_list%}
+    <li><a href="{% url 'shop:detail' p.id %}">{{p.title}}<br/><img src={{p.photo.url}}></a></li>
+  {%endfor%}
+</ul>
+{%endblock%}

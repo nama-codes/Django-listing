@@ -6,7 +6,7 @@
 <img alt='' height='678' id='Image1_img' src='../2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s1600/Hero.jpg' srcset='http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s72/Hero.jpg 72w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s128/Hero.jpg 128w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s220/Hero.jpg 220w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s400/Hero.jpg 400w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s640/Hero.jpg 640w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s800/Hero.jpg 800w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s1024/Hero.jpg 1024w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s1280/Hero.jpg 1280w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s1600/Hero.jpg 1600w' width='1600'>
 </img>
 <br/>
-<span class='caption'>A curated shop, <em>for</em> <a href='#'>Paintings</a><br/><a class="button" href="#">Start here ></a></span>
+<span class='caption'>A curated shop, <em>for</em> <a href="{%url 'shop:index'%}">Paintings</a><br/><a class="button" href="{%url 'shop:index'%}">Start here ></a></span>
 </div>
 </div></div>
 </aside>
@@ -15,16 +15,16 @@
 <main class='centered-bottom main-inner' id='main' role='main' tabindex='-1'>
 <div class='main section' id='page_body' name='Page Body'>
 <div class='widget PopularPosts' data-version='2' id='PopularPosts1'>
-<h3 class='title'>
-All Products
-</h3>
+<h1>
+{{ category.category }}
+</h1>
 <div class='widget-content'>
 <div role='feed'>
-{% for p in object_list %}
+{% for p in category.product_set.all %}
 <article class='post' role='article'>
 <div class='post has-featured-image'>
 <div class='snippet-thumbnail'>
-<a href="{% url 'shop:detail' p.id %}"><img alt='Image' src='{{p.photo.url}}'></a>
+<a href="{% url 'shop:detail' p.id %}"><img alt='Image' src='{{p.photo.url}}'</a>
 </div>
 <h3 class='post-title'><a href="{% url 'shop:detail' p.id %}">{{p.title}}</a></h3>
 <div class='buybutton'>

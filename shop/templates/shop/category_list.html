@@ -1,0 +1,9 @@
+{%extends 'shop/base.html'%}
+{%block body%}
+<h1>Here is the list of categories we have</h1>
+<ul>
+  {% for c in object_list%}
+    <li><a href="{% url 'shop:category' c.id %}">{{c.category}}</a></li>
+  {%endfor%}
+</ul>
+{%endblock%}
