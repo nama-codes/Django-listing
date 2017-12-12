@@ -1,43 +1,23 @@
 {%extends 'shop/base.html'%}
 {%block body%}
-<aside class='cover-outer'>
-<div class='cover-inner section' id='blog-cover' name='Cover'><div class='widget Image' data-version='2' id='Image1'>
-<div class='widget-content'>
-<img alt='' height='678' id='Image1_img' src='../2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s1600/Hero.jpg' srcset='http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s72/Hero.jpg 72w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s128/Hero.jpg 128w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s220/Hero.jpg 220w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s400/Hero.jpg 400w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s640/Hero.jpg 640w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s800/Hero.jpg 800w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s1024/Hero.jpg 1024w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s1280/Hero.jpg 1280w, http://2.bp.blogspot.com/-OI1Qyv4qBlM/WalRNayRfRI/AAAAAAAALAQ/f4HoDV66TY0_XulN4OnsIAOjtHhw8HciwCK4BGAYYCw/s1600/Hero.jpg 1600w' width='1600'>
-</img>
-<br/>
-<span class='caption'>A curated shop, <em>for</em> <a href='#'>Paintings</a><br/><a class="button" href="#">Start here ></a></span>
-</div>
-</div></div>
-</aside>
-<div class='main_content_container clearfix'>
-<div class='main-outer'>
-<main class='centered-bottom main-inner' id='main' role='main' tabindex='-1'>
-<div class='main section' id='page_body' name='Page Body'>
-<div class='widget PopularPosts' data-version='2' id='PopularPosts1'>
-<h3 class='title'>
-All Products
-</h3>
-<div class='widget-content'>
-<div role='feed'>
-{% for p in object_list %}
-<article class='post' role='article'>
-<div class='post has-featured-image'>
-<div class='snippet-thumbnail'>
-<a href="{% url 'shop:detail' p.id %}"><img alt='Image' src='{{p.photo.url}}'></a>
-</div>
-<h3 class='post-title'><a href="{% url 'shop:detail' p.id %}">{{p.title}}</a></h3>
-<div class='buybutton'>
-<a class='buynow' href="{% url 'shop:detail' p.id %}">More details ></a>
-</div>
-</div>
-</article>
-{%endfor%}
-</div>
-</div>
-</div></div>
-</main>
-</div>
-</div>
-</div>
+<section class="products-grid">
+  <div class="container">
+    <div class="row products-container">
+    {%for p in object_list%}
+      <div class="col-md-4 col-sm-6 col-xs-12 product">
+        <div class="thumbnail" style="background-image: url('{{p.photo.url}}');">
+          <div class="product-details text-center">
+            <div class="align-vertical">
+              <h3>{{p.title}}</h3>
+              <a href="{% url 'shop:detail' p.id %}" class="btn btn-primary"><i class="fa fa-enquiry"></i>View Details</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    {%endfor%}
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</section>
+
 {%endblock%}
